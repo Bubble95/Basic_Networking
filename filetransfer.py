@@ -1,8 +1,6 @@
-import networking
+import networking, time
 
-s = networking.Server('',1)
-s.launch()
+s = networking.Server('',23)
+s.send_file('hund.txt')
 
-while True:
-    s.send_file('hund.txt')
-
+time.sleep(10)
