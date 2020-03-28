@@ -1,7 +1,7 @@
 import socket, os, json, pdb
 
 class Client:
-    """ This class allwos the user to connect to a server by using the method: connect()
+    """ This class allwos the user to connect to a server and receive a textfile
     """
  
     #constructor + Type hinting adr:str appears whe creating object
