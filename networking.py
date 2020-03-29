@@ -174,20 +174,7 @@ class Server:
 
         while True:
             
-                # read file
-            if type(fileName) is not str:
-                raise Exception('fileName must be String')
-            # load file
-            fileJson ={}
-            try:
-                file = open(fileName,'r')
-            except Exception as err:
-                print('file = open(fileName,\'r\'\n', err)
-                return
-            fileJson['name'] = file.name
-            fileJson['content'] = file.read()
-            file.close()
-            msg = json.dumps(fileJson)
+            
             
             #accept connections
             try:
@@ -206,6 +193,20 @@ class Server:
                 print('server closed by client:\n',cAdr)
                 break
             else:
+                # read file
+                if type(fileName) is not str:
+                    raise Exception('fileName must be String')
+                # load file
+                fileJson ={}
+                try:
+                    file = open(fileName,'r')
+                except Exception as err:
+                    print('file = open(fileName,\'r\'\n', err)
+                    return
+                fileJson['name'] = file.name
+                fileJson['content'] = file.read()
+                file.close()
+                msg = json.dumps(fileJson)
                 #send file and close connection if empty response
                 c.send(msg.encode())
                 c.close()
